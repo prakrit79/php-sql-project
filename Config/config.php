@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 
 $serverName=$_SERVER['SERVER_NAME'];
 
@@ -13,8 +15,6 @@ if($serverName=="localhost" || $serverName==VIRTUALHOST){
 
 
 switch(ENVIRONMENT){
-
-
 
     case 'development':
         error_reporting(-1);
@@ -43,6 +43,9 @@ $GLOBALS['config'] = array(
         'dbname' => 'db_php7',
         'user'   => 'root',
         'password' => 'password79'
+        ),
+    'session' => array(
+        'tokenName' => 'csrf'
         )
 
     );

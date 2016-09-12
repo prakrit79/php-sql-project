@@ -1,5 +1,10 @@
 <?php require_once('init/initialize.php'); ?>
 
+<?php 
+    Session::isLoggedIn(); 
+    //Session::isAdmin();
+?>
+
 <?php
     if(isset($_GET['page']) && !empty($_GET['page'])){
         $page=$_GET['page'];
@@ -22,8 +27,9 @@ require_once('Pages/layouts/header.php');
 //Body of the html page
     $file="Pages/".$page;
     if(file_exists($file)){
-        require_once($file);
+       require_once('Pages/layouts/nav.php');
         require_once('Pages/layouts/top.php');
+        require_once($file);
     }else{
         echo "No such file exists \"{$file}\" ";
     }

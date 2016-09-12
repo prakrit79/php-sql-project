@@ -4,7 +4,7 @@
         <div class="user-setting">
             <div class="dropdown">
                 <button id="dLabel" type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Alex
+                    <?= Session::get('username_logged_in'); ?>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -17,3 +17,7 @@
 
     </div>
 </div><!--end of top-time-->
+
+
+
+

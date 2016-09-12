@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Database Library does CRUD Operation uses PDO (PHP Data Object)
- * User: Selvesan
- * Date: 8/23/2016
- * Time: 7:44 AM
- */
+
 class Database
 {
 
@@ -46,6 +41,7 @@ class Database
      * Singleton pattern implementation to connect
      * @return object
      */
+
     public static function instantiate(){
         if(!(isset(self::$_instance))){
             self::$_instance=new Database();
@@ -122,7 +118,6 @@ class Database
             $sql.=" ".$clause;
         }
 
-
         $stmt = $this->_connect->prepare($sql);
         try{
             $stmt->execute($bindValue);
@@ -154,7 +149,15 @@ class Database
 
 
 
-    public function delete(){
+    public function delete($tableName="",$criteria="",$bindValue=array()){
+        $sql="DELETE FROM ".$tableName." WHERE ".$criteria;
+        $stmt=$this->_connect->prepare($sql);
+        try{
+            $stmt->execute($bindValue);
+            return true;
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
 
     }
 
